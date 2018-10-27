@@ -98,7 +98,7 @@ public class TabliceCwiczenia {
         System.out.println("");
         System.out.println("");
         // najdluzszy String w tablicy
-        String[] tabString = {"Ala", "ma", "kota", "a", "kot", "ma","ale"};
+        String[] tabString = {"Ala", "ma", "kota", "a", "kot", "ma","ale", "Ala","ma", "kota", "oooo", "ddddddddd", "eeeeeeeee"};
 
         System.out.println(longestString(tabString));
 
@@ -182,7 +182,7 @@ public class TabliceCwiczenia {
         myLongesString = tab[0];
         for(int i=0; i< tab.length;i++){
 
-            if(tab[i].length()>myLongesString.length()){
+            if(tab[i].length()>=myLongesString.length()){
                 myLongesString = tab[i];
             }
 
