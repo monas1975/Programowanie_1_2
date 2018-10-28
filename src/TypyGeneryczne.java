@@ -10,6 +10,30 @@ public class TypyGeneryczne {
         System.out.println(findGeneric(test, 8));
         System.out.println(findGeneric(test2, "Anka"));
         System.out.println(findGeneric(test2, "Marek"));
+
+        Integer [] tablica = {5,2,1,8,7,9,3};
+        for(int i=0; i<tablica.length;i++){
+            System.out.print(tablica[i] + "  , ");
+        }
+        szybkieSortowanieGen(tablica, 0, tablica.length - 1);
+
+        System.out.println("");
+
+        for(int i=0; i<tablica.length;i++){
+            System.out.print(tablica[i] + "  , ");
+        }
+
+        String [] tablica2 = {"tamata","tomek", "ewelina", "magda", "monika","ala", "krszysztof","marta","ela"};
+        for(int i=0; i<tablica2.length;i++){
+            System.out.print(tablica2[i] + "  , ");
+        }
+        szybkieSortowanieGen(tablica2, 0, tablica.length - 1);
+
+        System.out.println("");
+
+        for(int i=0; i<tablica2.length;i++){
+            System.out.print(tablica2[i] + "  , ");
+        }
     }
 
     public static <T> int findGeneric(T[] array, T element) {
@@ -20,5 +44,31 @@ public class TypyGeneryczne {
             }
         }
         return index;
+    }
+
+    public static <T extends  Comparable> T[] szybkieSortowanieGen(T[] array, int left, int right){
+        int  i =0; //szuka do przedostatniej pozycji
+        int j=0;   //zapamietuje miejsce wstawienia elementow mniejszych od piwvotu
+        T pivot;
+        T temp;
+        //wyznaczam element srodkowy 'pivot'
+
+        i = (left+right)/2;
+        pivot = array[i];
+        array[i] = array[right];
+        //zmien z ostatniemelementem zbioru
+
+        for(j=i=left;i<right;i++)
+            if(array[i].compareTo(pivot)<0){
+                temp =array[i];
+                array[i] = array[j];
+                array[j] = temp;
+                j++;
+            }
+        array[right] = array[j];
+        array[j] = pivot;
+        if (left<j-1) szybkieSortowanieGen(array,left,j-1);
+        if(j+1<right) szybkieSortowanieGen(array,j+1,right);
+        return array;
     }
 }
